@@ -28,3 +28,14 @@ coverage/
 # Temporary files
 .tmp/
 tmp/
+
+# Bolt18 recovery project
+Bolt18-Control-System/original/**
+Bolt18-Control-System/**/*.pro
+Bolt18-Control-System/**/*.sym
+Bolt18-Control-System/**/*.sdb
+Bolt18-Control-System/**/*.ci
+Bolt18-Control-System/**/*.dbc
+Bolt18-Control-System/**/*.ini
+Bolt18-Control-System/**/*.rtf
+Bolt18-Control-System/**/*.zip

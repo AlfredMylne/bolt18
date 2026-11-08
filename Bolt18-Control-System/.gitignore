@@ -1,0 +1,20 @@
+# Local project settings
+.vscode/
+.DS_Store
+
+# Proprietary or recovered original source files
+original/**
+**/*.pro
+**/*.sym
+**/*.sdb
+**/*.ci
+**/*.dbc
+**/*.ini
+**/*.rtf
+**/*.zip
+**/*.rar
+**/*.7z
+
+# Temporary working files
+*.tmp
+*.log
