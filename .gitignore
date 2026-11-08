@@ -29,6 +29,13 @@ coverage/
 .tmp/
 tmp/
 
+# USB-CAN and support tools
+USB-CAN*
+*.rar
+*.exe
+*.pdf
+Configure.ini
+
 # Bolt18 recovery project
 Bolt18-Control-System/original/**
 Bolt18-Control-System/**/*.pro

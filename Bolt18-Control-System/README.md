@@ -42,3 +42,9 @@ The original project archive was located in `D:\Dropbox\TIVA\AC_Bolt\MDI_boat` a
 
 See the detailed preliminary report here:
 - [analysis/original-control-system-recovery-report.md](analysis/original-control-system-recovery-report.md)
+
+## Dashboard prototype
+
+A first dashboard mock-up for monitoring system health, steering, propulsion, safety and CAN activity is available here:
+- [tools/dashboard/bolt18-dashboard.html](tools/dashboard/bolt18-dashboard.html)
+- [tools/dashboard/README.md](tools/dashboard/README.md)
