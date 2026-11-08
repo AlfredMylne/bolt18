@@ -52,10 +52,12 @@ Supporting evidence:
 - Folder naming and project file naming use `IOXp` and `esx_ioxp` naming conventions.
 - `SensorWks` contains STW ESX-IOXp documentation and CoDeSys references.
 - `CoDeSys.doc` and `ESX-TC3 Getting Started(2.03r0).chm` are present in the recovery archive.
+- The project binary header includes the string `CoDeSys+` and the version marker `2.3.9.28`.
 
 Preliminary conclusion:
 - Controller family: STW ESX-IOXp
-- Development environment: CoDeSys 2.3 / TC3-era compatible toolchain
+- Development environment: CoDeSys 2.3 (`2.3.9.28` confirmed in the project header)
+- Target architecture: ESX/IOXp PLC family, likely intended for industrial marine control applications
 - Further confirmation is required from the project metadata and controller-specific configuration files.
 
 ## 3. Assessment of the original CoDeSys project
@@ -70,9 +72,14 @@ The following file types are present and consistent with a real CoDeSys PLC proj
 
 This indicates a working control project rather than a partially recovered or synthetic mock-up.
 
+Additional evidence:
+- The project file includes the binary signature `CoDeSys+` and version text `2.3.9.28`, confirming a legacy CoDeSys 2.3 toolchain.
+- The presence of `UQM` and `Livorsi` development variants suggests the controller was adapted and tested against alternative propulsion and operator-interface modules.
+- The project remains preserved without modification and is being treated as the baseline reference for the recovery task.
+
 Preliminary assessment:
 - The original project is likely a PLC application for steering and propulsion control using the ESX-IOXp hardware.
-- The presence of `UQM` and `Livorsi` development variants suggests the controller was adapted and tested against alternative propulsion and operator-interface modules.
+- The development variants show an engineering process that tested multiple upstream interface combinations rather than a single fixed deployment.
 - No software modification is being performed at this stage; the original project remains preserved for analysis.
 
 ## 4. Preliminary steering architecture
@@ -118,9 +125,17 @@ These files indicate:
 - a torque/speed controller DBC (`TorqSpeedCtrl_PDU2_1_0.dbc`),
 - references to J1939-related message mapping (`Livorsij1939Map.rtf`).
 
+Confirmed message families from the recovered DBCs include:
+- `UniversalCommand` and `AccelerationLimitsCommand` in the UQM torque/speed DBC
+- `SystemStatusMessage` and `CANHeartbeatCommand` for inverter status and monitoring
+- `AccurateFeedback` providing speed, current, voltage, and torque feedback
+- `EngineSpeed`, `Vehicle_Speed`, and engine-related telemetry in the generic Bolt CAN database
+- J1939-style references for engine speed, oil pressure, fuel level, and vehicle speed in the Livorsi map
+
 Preliminary conclusion:
 - The system appears to use a hybrid approach: proprietary messages plus J1939-compatible mapping.
-- This matches the expected marine propulsion and steering environment.
+- This is consistent with a marine propulsion / vessel control network combining local motor controls with standard engine and vehicle telemetry messages.
+- The evidence supports CAN-based propulsion control and instrumentation, but not yet a complete steering-specific message catalogue without further inspection of the full PLC project.
 
 ## 7. Electrical documentation inventory
 
@@ -130,8 +145,16 @@ The archive contains evidence of electrical and connector-related material:
 - `Livorsi\...` interface documentation
 - `Battery\...` power system references
 - `CANInformation\...` bus documentation
+- `MYD0703_BOLT18 Mk2\Bolt18 - Mark2\SW\Electrical\Electrical_51-Bolt 18 V2-fromToList.xml`
+- `MYD0703_BOLT18 Mk2\Bolt18 - Mark2\SW\Electrical\Electrical_51-Bolt 18 V2-segmentList.xml`
 
-This is sufficient to proceed with a structured electrical documentation review, but the original design assembly path referenced in the project brief (`Mylne/MYD - Contracted Projects/...`) was not located in the local Dropbox snapshot inspected so far.
+This is sufficient to proceed with a structured electrical documentation review. The original electrical design tree has been located and preserved, and the path is now confirmed as:
+- `D:\Dropbox\Mylne\MYD - Contracted Projects\MYD0703_BOLT18 Mk2\Bolt18 - Mark2\SW\Electrical`
+
+Important limitation:
+- The current XML export does not yet provide a complete connector pin list.
+- The `fromToList` export contains only four generic wire records and a single segment element; it does not fully describe the final connector-to-connector pin assignments or complete net list.
+- This means the electrical reconstruction remains partial until the full SolidWorks design data or a richer export is obtained.
 
 ## 8. Missing information
 
