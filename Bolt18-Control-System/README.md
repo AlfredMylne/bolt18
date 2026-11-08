@@ -35,3 +35,10 @@ Original proprietary project files are not committed to this repository until re
 ## Initial investigation status
 
 This project is currently in the recovery and documentation phase. No replacement steering logic or hardware redesign is being created at this stage.
+
+## Recovered source inventory
+
+The original project archive was located in `D:\Dropbox\TIVA\AC_Bolt\MDI_boat` and the relevant files were preserved under `original/` without modification.
+
+See the detailed preliminary report here:
+- [analysis/original-control-system-recovery-report.md](analysis/original-control-system-recovery-report.md)
